@@ -27,6 +27,7 @@ public class Application {
 		// Initialisation de la partie
 		System.out.println("\nLa partie est prête à commencer !");
 
-		new Puissance4(new Joueur(nom1, Jeu.PION_JAUNE),	new Joueur(nom2, Jeu.PION_ROUGE)).joue();
+        /* TODO Pourquoi créer les joueurs ici ? Et non dans le constructeur de Puissance4 ? */
+		new Puissance4(new Joueur(nom1, Jeu.PION_JAUNE), new Joueur(nom2, Jeu.PION_ROUGE)).joue();
 	}
 }
