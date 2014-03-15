@@ -62,10 +62,10 @@ public class Jeu {
 	 * deltaColonne et deltaLigne on peut faire un check dans 
 	 * toutes les directions possibles :
 	 * 
-	 * --> horizontale: dCol = 0, dLigne = 1 
-	 * --> v�rticale: dCol = 1, dLigne = 0
-	 * --> 1ere diagonale: dCol = 1, dLigne = 1 
-	 * --> 2eme diagonale: dCol = 1, dLigne = -1
+	 * --> horizontale: deltaColonne = 0, deltaLigne = 1 
+	 * --> v�rticale: deltaColonne = 1, deltaLigne = 0
+	 * --> 1ere diagonale: deltaColonne = 1, deltaLigne = 1 
+	 * --> 2eme diagonale: deltaColonne = 1, deltaLigne = -1
 	 * 
 	 * @param x
 	 *            Colonne de recherche originale
