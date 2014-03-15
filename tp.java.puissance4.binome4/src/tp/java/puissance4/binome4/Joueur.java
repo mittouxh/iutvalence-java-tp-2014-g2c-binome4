@@ -1,56 +1,63 @@
 package tp.java.puissance4.binome4;
 
+/**
+ * TODO
+ *
+ * @author TODO
+ * @version TODO
+ */
 public class Joueur {
+    /** TODO Change en cours de partie ? */
 	private String nom;
-	private int couleur;
+    /** TODO Change en cours de partie ? */
+    private int couleur;
 
-	public Joueur(String nom, int couleur) {
-		this.nom = nom;
-		this.couleur = couleur;
-	}
+    public Joueur(String nom, int couleur) {
+        this.nom = nom;
+        this.couleur = couleur;
+    }
 
-	public String obtenirNom() {
-		return nom;
-	}
+    public String obtenirNom() {
+        return nom;
+    }
 
-	public int obtenirCouleur() {
-		return couleur;
-	}
+    public int obtenirCouleur() {
+        return couleur;
+    }
 
-	/**
-	 * Cette méthode joue un coup avec le tableau reçu en paramètre. La méthode
-	 * est vide car les "sous-classes" doivent l'implémenter.
-	 * 
-	 * @param jeu
-	 *            Il s'agit du jeu avec lequel on va jouer.
-	 */
-	public void joue(Jeu jeu) {
-		jeu.afficherPlateau();
+    /* TODO La JavaDoc Ã©voque des sous-classesâ€¦ OÃ¹ sont-elles ? */
+    /* TODO Je trouve discutable le choix de rÃ©partition du code. Je serais heureux d'en discuter avec vous en TP. */
+    /**
+     * Cette mÃ©thode joue un coup avec le tableau reÃ§u en paramÃ¨tre.
+     * <p/>
+     * La mÃ©thode est vide car les "sous-classes" doivent l'implÃ©menter.
+     *
+     * @param jeu Il s'agit du jeu avec lequel on va jouer.
+     */
+    public void joue(Jeu jeu) {
+        jeu.afficherPlateau();
 
-		boolean coupValide;
-		do {
+        boolean coupValide;
+        do {
+            // On va ici saisir la colonne souhaitÃ©e par le joueur et on va verifier sa validitÃ©.
+            System.out.printf("Joueur %s, entrez le numÃ©ro de colonne souhaitÃ© (entre 1 et %d) : %n", this.obtenirNom(), jeu.obtenirTailleColonne());
+            /* TODO Attention aux Exceptions ! */
+            int colonne = Application.scanner.nextInt();
 
-			// On va ici saisir la colonne souhaitée par le joueur
-			// et on va verifier sa validité.
+            // On pourrait faire ici la validation de la lecture.
 
-			System.out.println("Joueur " + this.obtenirNom()
-					+ ", entrez le numéro de colonne souhaité"
-					+ "  (entre 1 et " + jeu.obtenirTailleColonne() + ") : ");
+            // Remet la variable "col" entre 0 et taille-1.
+            colonne--;
 
-			int colonne = Application.scanner.nextInt();
+            coupValide = jeu.placerPion(colonne, this.obtenirCouleur());
+            /* TODO ArrÃªtez les tests Ã  vrai ou faux ! */
+            /* TODO C'est (!coupValide) */
+            if (coupValide == false) {
+                System.out.println("Le coup est non valide !");
+            }
+        }
+        while (coupValide == false);
 
-			// on pourrait faire ici la validation de la lecture
-
-			colonne--;
-
-			// remet la variable "col" entre 0 et taille-1
-
-			coupValide = jeu.placerPion(colonne, this.obtenirCouleur());
-			if (coupValide == false) {
-				System.out.println("Le coup est non valide !");
-			}
-		} while (coupValide == false);
-
-	}
+    }
 
 }
