@@ -1,1 +1,4 @@
 /bin
+*.ipr
+*.iws
+*.iml
