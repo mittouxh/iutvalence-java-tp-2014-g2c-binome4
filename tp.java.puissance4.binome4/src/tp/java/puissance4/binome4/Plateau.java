@@ -1,46 +1,33 @@
 package tp.java.puissance4.binome4;
 
-/* TODO Est-ce que "Jeu" est le bon nom ? Finalement, c'est l'implémentation du plateau non ? */
-
 /**
- * TODO
+ * Class Plateau
  *
- * @author TODO
- * @version TODO
+ * @author massonsilvestre
+ * @version V1.0
  */
-public class Jeu {
-    /* TODO Pourquoi tout en public ? */
-    /** Nombre de colonnes. */
-	public static final int NOMBRE_COLONNE = 7;
-    /** Nombre de lignes. */
-    public static final int NOMBRE_LIGNE = 6;
-    /* TODO En java, on fait static final. */
-    public final static int CASE_VIDE  = 0;
-    public final static int PION_JAUNE = 1;
-    public final static int PION_ROUGE = 2;
+public class Plateau {
+	/** Nombre de colonnes. */
+	private static final int NOMBRE_COLONNE = 7;
+	/** Nombre de lignes. */
+    private static final int NOMBRE_LIGNE = 6;
+  
+    private final int tailleLigne;
+    private final int tailleColonne;
+    private Pion[][] plateau;
 
-    /* TODO Est-ce que ces attributs peuvent changer en cours de partie ? */
-    /* TODO Pourquoi ces deux premiers attributs ? Ils diffèrent des constantes ? */
-    public  int tailleLigne   = NOMBRE_LIGNE;
-    private int tailleColonne = NOMBRE_COLONNE;
-    private int[][] plateau; // 0 = vide, 1 = joueur bleu, 2 = joueur rouge
-
-    /* TODO À quoi servent ces paramètres ? */
-    public Jeu(int tailleColonne, int tailleLigne) {
-        /* TODO Pourquoi une méthode dédiée ? */
-        initJeu(tailleColonne, tailleLigne);
+    public Plateau() {
+    	this(Plateau.NOMBRE_COLONNE, Plateau.NOMBRE_LIGNE);
     }
-
-    private void initJeu(int tailleColonne, int tailleLigne) {
-
+    
+    public Plateau(int tailleColonne, int tailleLigne) {
         this.tailleColonne = tailleColonne;
         this.tailleLigne = tailleLigne;
 
-		plateau = new int[tailleColonne][tailleLigne];
-        /* TODO Cette boucle est implicitement faite par le new parce que CASE_VIDE==0 */
+		plateau = new Pion[tailleColonne][tailleLigne];		
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
-				plateau[colonne][ligne] = CASE_VIDE;
+				plateau[colonne][ligne] = Pion.CASE_VIDE;
 			}
 		}
 	}
@@ -51,9 +38,10 @@ public class Jeu {
      * @param colonne TODO
      * @param joueur  TODO
      *
-     * @return TODO
+     * @return true
+     * 			SSI la colonne n'est pas pleine.
      */
-    public boolean placerPion(int colonne, int joueur) {
+    public boolean placerPion(int colonne, Pion joueur) {
 		if ((colonne < 0) || (colonne >= tailleColonne)) {
 			return false;
 		}
@@ -61,7 +49,7 @@ public class Jeu {
 		// On trouve la premiere case vide dans la colonne choisie,
 		// Si la colonne n'est pas pleine, on return true
 		for (int ligne = 0; ligne < tailleLigne; ligne++) {
-			if (plateau[colonne][ligne] == CASE_VIDE) {
+			if (plateau[colonne][ligne] == Pion.CASE_VIDE) {
 				plateau[colonne][ligne] = joueur;
 				return true;
 			}
@@ -82,10 +70,10 @@ public class Jeu {
 	 * deltaColonne et deltaLigne on peut faire un check dans
 	 * toutes les directions possibles :
 	 *
-	 * --> horizontale: dCol = 0, dLigne = 1
-	 * --> verticale: dCol = 1, dLigne = 0
-	 * --> 1ere diagonale: dCol = 1, dLigne = 1
-	 * --> 2eme diagonale: dCol = 1, dLigne = -1
+	 * --> horizontale: deltaColonne = 0, deltaLigne = 1
+	 * --> verticale: deltaColonne = 1, delatLigne = 0
+	 * --> 1ere diagonale: delatColonne = 1, deltaLigne = 1
+	 * --> 2eme diagonale: deltaColonne = 1, deltaLigne = -1
 	 *
 	 * @param x
 	 *            Colonne de recherche originale
@@ -102,7 +90,7 @@ public class Jeu {
 
 	private boolean compteurPionAlignes(int x, int y, int deltaColonne,	int deltaLigne) {
 
-		int couleur = CASE_VIDE;
+		Pion couleur = Pion.CASE_VIDE;
 		int compteurPion = 0;
 
 		int ligneCourante = x; // position x de départ
@@ -120,7 +108,7 @@ public class Jeu {
 			}
 
 			// On sort de la boucle seulement quand le compteur est égal à 4
-			if ((couleur != Jeu.CASE_VIDE) && (compteurPion == 4)) {
+			if ((couleur != Pion.CASE_VIDE) && (compteurPion == 4)) {
 				return true;
 			}
 
@@ -133,7 +121,6 @@ public class Jeu {
 		return false;
 	}
 
-    /* TODO Donc finalement, vous avez opté pour une vérification du tableau complet entre chaque coup ? */
 	/**
 	 * Cette méthode cherche 4 pions de la même couleurs alignés dans une des 8 directions possibles.
 	 *
@@ -188,12 +175,12 @@ public class Jeu {
 	 *
 	 * @return true si le tableau est plein
 	 */
-	public boolean plateauEstPlein() {
+	public boolean estPlein() {
         /* TODO Pourquoi une recherche ? Pourquoi ne comptez-vous pas simplement les coups ? */
 		// On cherche une case vide. S'il n'y en a aucune, le tableau est plein
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
-				if (plateau[colonne][ligne] == Jeu.CASE_VIDE) {
+				if (plateau[colonne][ligne] == Pion.CASE_VIDE) {
 					return false;
 				}
 			}
@@ -201,15 +188,11 @@ public class Jeu {
 		return true;
 	}
 
-    /* TODO À quoi sert cet méthode ?
-     *  Pour le coup, vous avez 2 variables et une méthode pour obtenir le nombre de colonnes !
-     *  Tout ça pour une valeur qui est intrinsèque au Puissance 4…
-     */
 	public int obtenirTailleColonne() {
 		return tailleColonne;
 	}
 
-    public void afficherPlateau() {
+    public void afficher() {
         // Affiche les numéros de colonnes jusqu'à tailleColonne
         for (int numeroDeColonne = 1; numeroDeColonne <= tailleColonne; ++numeroDeColonne) {
             System.out.printf("|%d|", numeroDeColonne);
@@ -219,20 +202,11 @@ public class Jeu {
         // Affiche le plateau
         for (int ligne = tailleLigne - 1; ligne >= 0; --ligne) {
             for (int colonne = 0; colonne < tailleColonne; colonne++) {
-                /* Cette méthode peut être rendu plus élégante avec un enum pour modéliser les pions. */
-                switch (plateau[colonne][ligne]) {
-                    case Jeu.CASE_VIDE:
-                        System.out.printf(" . ");
-                        break;
-                    case Jeu.PION_ROUGE:
-                        System.out.printf(" X ");
-                        break;
-                    case Jeu.PION_JAUNE:
-                        System.out.printf(" O ");
-                        break;
+                	System.out.print(this.plateau[colonne][ligne]);
+              	
                 }
+            System.out.println();
             }
-            System.out.println("\n_____________________");
-        }
-	}
+            System.out.println("_____________________\n");
+    }
 }

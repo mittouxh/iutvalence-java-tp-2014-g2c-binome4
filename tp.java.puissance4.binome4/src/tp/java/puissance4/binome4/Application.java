@@ -3,17 +3,15 @@ package tp.java.puissance4.binome4;
 import java.util.Scanner;
 
 /**
- * Classe principale.
+ * Class Application
  *
- * @author TODO
- * @version TODO
+ * @author massonsilvestre
+ * @version V1.0
  */
+
 public class Application {
-    /** TODO Pourquoi un attribut ? */
-	protected static Scanner scanner = new Scanner(System.in);
-
 	public static void main(String[] args) {
-
+		Scanner scanner = new Scanner(System.in);
 		// Saisie du joueur 1 --> couleur Jaune
 		System.out.println("Entrez le nom du Joueur n°1 (signe O) : ");
 		String nom1 = scanner.nextLine();
@@ -27,7 +25,8 @@ public class Application {
 		// Initialisation de la partie
 		System.out.println("\nLa partie est prête à commencer !");
 
-        /* TODO Pourquoi créer les joueurs ici ? Et non dans le constructeur de Puissance4 ? */
-		new Puissance4(new Joueur(nom1, Jeu.PION_JAUNE), new Joueur(nom2, Jeu.PION_ROUGE)).joue();
+		new Puissance4(nom1,nom2).joue();
+		
+		
 	}
 }

@@ -1,31 +1,28 @@
 package tp.java.puissance4.binome4;
 
 /**
- * TODO
+ * Class Puissance4
  *
- * @author TODO
- * @version TODO
+ * @author massonsilvestre
+ * @version V1.0
  */
 public class Puissance4 {
-    /** TODO Change en cours de partie ? */
-	private Joueur[] joueurs = new Joueur[2];
-    /** TODO Change en cours de partie ? */
-	private Jeu jeu;
+	private final Joueur[] joueurs = new Joueur[2];
+	private final Plateau jeu;
 
-	public Puissance4(Joueur joueur1, Joueur joueur2) {
-		joueurs[0] = joueur1;
-		joueurs[1] = joueur2;
-        /* TODO Pourquoi cet appel avec des paramètres ? Le puissance 4 n'a pas plusieurs tailles de grille non ? */
-		jeu = new Jeu(Jeu.NOMBRE_COLONNE, Jeu.NOMBRE_LIGNE);
+	public Puissance4(String joueur1, String joueur2) {
+		joueurs[0] = new Joueur(joueur1, Pion.PION_JAUNE);
+		joueurs[1] = new Joueur(joueur2, Pion.PION_ROUGE);
+		jeu = new Plateau();
 	}
 
 	public void joue() {
 		int vainqueur = -1;
 		int joueurCourant = 0;
 
-		while ((vainqueur == -1) && !jeu.plateauEstPlein()) {
+		while ((vainqueur == -1) && !jeu.estPlein()) {
 			joueurs[joueurCourant].joue(jeu);
-			if (jeu.plateauEstPlein()) {
+			if (jeu.estPlein()) {
 				vainqueur = -1;
 			}
 
@@ -38,10 +35,9 @@ public class Puissance4 {
 			joueurCourant = (joueurCourant + 1 ) % 2;
 		}
 		System.out.println(" La partie vient de ce terminer ");
-		jeu.afficherPlateau();
+		jeu.afficher();
 		
 		if (vainqueur == -1) {
-            /* TODO C'est dur comme jugement de valeur ;-). */
 			System.out.println(" Le match est nul ");
 		} else {
             System.out.printf(" Le vainqueur est %s%n", joueurs[vainqueur].obtenirNom());
