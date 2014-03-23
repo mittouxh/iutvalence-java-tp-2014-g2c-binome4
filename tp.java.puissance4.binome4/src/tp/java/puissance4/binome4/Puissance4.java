@@ -1,21 +1,25 @@
 package tp.java.puissance4.binome4;
 
 /**
- * Class Puissance4
+ * TODO
  *
- * @author massonsilvestre
- * @version V1.0
+ * @author TODO
+ * @version 1.0.0
  */
 public class Puissance4 {
-	private final Joueur[] joueurs = new Joueur[2];
-	private final Plateau jeu;
+    /** TODO. */
+	private final Joueur[] joueurs;
+    /** TODO. */
+    private final Plateau jeu;
 
 	public Puissance4(String joueur1, String joueur2) {
-		joueurs[0] = new Joueur(joueur1, Pion.PION_JAUNE);
+		joueurs = new Joueur[2];
+        joueurs[0] = new Joueur(joueur1, Pion.PION_JAUNE);
 		joueurs[1] = new Joueur(joueur2, Pion.PION_ROUGE);
 		jeu = new Plateau();
 	}
 
+    /** TODO. */
 	public void joue() {
 		int vainqueur = -1;
 		int joueurCourant = 0;
@@ -36,7 +40,7 @@ public class Puissance4 {
 		}
 		System.out.println(" La partie vient de ce terminer ");
 		jeu.afficher();
-		
+
 		if (vainqueur == -1) {
 			System.out.println(" Le match est nul ");
 		} else {

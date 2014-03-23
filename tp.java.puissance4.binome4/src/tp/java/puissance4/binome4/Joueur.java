@@ -3,14 +3,15 @@ package tp.java.puissance4.binome4;
 import java.util.Scanner;
 
 /**
- * Class Joueur
+ * TODO.
  *
- * @author massonsilvestre
- * @version V1.0
+ * @author TODO
+ * @version 1.0.0
  */
-
 public class Joueur {
-	private final String nom;
+	/** TODO. */
+    private final String nom;
+    /** TODO. */
     private final Pion couleur;
 
     public Joueur(String nom, Pion couleur) {
@@ -26,9 +27,9 @@ public class Joueur {
         return couleur;
     }
 
-    /**Cette méthode joue un coup avec le tableau reçu en paramètre.
-     * 
-     * La méthode est vide car les "sous-classes" doivent l'implémenter.
+    /* TODO À discuter en TP. */
+    /**
+     * Cette méthode joue un coup avec le tableau reçu en paramètre.
      *
      * @param jeu Il s'agit du jeu avec lequel on va jouer.
      */

@@ -3,12 +3,11 @@ package tp.java.puissance4.binome4;
 import java.util.Scanner;
 
 /**
- * Class Application
+ * TODO.
  *
- * @author massonsilvestre
- * @version V1.0
+ * @author TODO
+ * @version 1.0.0
  */
-
 public class Application {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -26,7 +25,5 @@ public class Application {
 		System.out.println("\nLa partie est prête à commencer !");
 
 		new Puissance4(nom1,nom2).joue();
-		
-		
 	}
 }
