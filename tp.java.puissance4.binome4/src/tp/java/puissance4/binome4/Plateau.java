@@ -1,25 +1,38 @@
 package tp.java.puissance4.binome4;
 
 /**
- * Class Plateau
+ * TODO.
  *
- * @author massonsilvestre
- * @version V1.0
+ * @author TODO
+ * @version 1.0.0
  */
 public class Plateau {
 	/** Nombre de colonnes. */
 	private static final int NOMBRE_COLONNES = 7;
 	/** Nombre de lignes. */
+<<<<<<< HEAD
     private static final int NOMBRE_LIGNES = 6;
   
+=======
+    private static final int NOMBRE_LIGNE = 6;
+    /** TODO. */
+>>>>>>> branch 'master' of https://github.com/MassonSilvestre/iutvalence-java-tp-2014-g2c-binome4.git
     private final int tailleLigne;
+    /** TODO. */
     private final int tailleColonne;
+<<<<<<< HEAD
     private Pion[][] pions;
+=======
+    /** TODO. */
+    private final Pion[][] plateau;
+>>>>>>> branch 'master' of https://github.com/MassonSilvestre/iutvalence-java-tp-2014-g2c-binome4.git
 
     public Plateau() {
     	this(Plateau.NOMBRE_COLONNES, Plateau.NOMBRE_LIGNES);
     }
-    
+
+    /* TODO Vous ne vérifiez pas les paramétres ? */
+    /** TODO. */
     public Plateau(int tailleColonne, int tailleLigne) {
         this.tailleColonne = tailleColonne;
         this.tailleLigne = tailleLigne;
@@ -50,36 +63,33 @@ public class Plateau {
 		return false;
 	}
 
-	/**
-	 * Cette méthode cherche 4 pions de la meme couleur alignés.
-	 * Elle incrémente le compteur (compteurPion) à chaque fois
-	 * qu'elle rencontre un pion de la même couleur aligné avec le
-	 * précédent. Quand le compteur == 4 on return true
-	 * On utilise le point d'origine, de coordonnées (x,y), et le
-	 * déplacement delta (deltaColonne,deltaLigne).
-	 * En utilisant des les bonnes valeurs dans cherche4() pour
-	 * deltaColonne et deltaLigne on peut faire un check dans
-	 * toutes les directions possibles :
-	 *
-	 * --> horizontale: deltaColonne = 0, deltaLigne = 1
-	 * --> verticale: deltaColonne = 1, delatLigne = 0
-	 * --> 1ere diagonale: delatColonne = 1, deltaLigne = 1
-	 * --> 2eme diagonale: deltaColonne = 1, deltaLigne = -1
-	 *
-	 * @param x
-	 *            Colonne de recherche originale
-	 * @param y
-	 *            Ligne de recherche originale
-	 * @param deltaColonne
-	 *            Permet de se déplacer sur une colonne
-	 * @param deltaLigne
-	 *            Permet de se déplacer sur une ligne
-	 * @return true
-	 * 			  SSI on trouve un alignement dans une des directions.
-	 * 			  Donc si compteurPion == 4.
-	 */
-
-	private boolean compteurPionAlignes(int x, int y, int deltaColonne,	int deltaLigne) {
+    /**
+     * Cette méthode cherche 4 pions de la meme couleur alignés.
+     * <p/>
+     * Elle incrémente le compteur (compteurPion) à chaque fois
+     * qu'elle rencontre un pion de la même couleur aligné avec le
+     * précédent. Quand le compteur == 4 on return <i>true</i>.
+     * <p/>
+     * On utilise le point d'origine, de coordonnées (x,y), et le
+     * déplacement delta (deltaColonne,deltaLigne).
+     * En utilisant des les bonnes valeurs dans cherche4() pour
+     * deltaColonne et deltaLigne on peut faire un check dans
+     * toutes les directions possibles :
+     * <ul>
+     * <li>horizontale: deltaColonne = 0, deltaLigne = 1</li>
+     * <li>verticale: deltaColonne = 1, delatLigne = 0</li>
+     * <li>1ere diagonale: delatColonne = 1, deltaLigne = 1</li>
+     * <li>2eme diagonale: deltaColonne = 1, deltaLigne = -1</li>
+     * </ul>
+     *
+     * @param x            Colonne de recherche originale
+     * @param y            Ligne de recherche originale
+     * @param deltaColonne Permet de se déplacer sur une colonne
+     * @param deltaLigne   Permet de se déplacer sur une ligne
+     *
+     * @return true SSI on trouve un alignement dans une des directions. Donc si compteurPion == 4.
+     */
+    private boolean compteurPionAlignes(int x, int y, int deltaColonne,	int deltaLigne) {
 
 		Pion couleur = Pion.CASE_VIDE;
 		int compteurPion = 0;
@@ -90,6 +100,7 @@ public class Plateau {
 		while ((colonneCourante >= 0) && (colonneCourante < tailleColonne)
 				&& (ligneCourante >= 0) && (ligneCourante < tailleLigne)) {
 			if (pions[colonneCourante][ligneCourante] != couleur) {
+
 				// Si la couleur vient à être modifier, on réinitialise le compteur
 				couleur = pions[colonneCourante][ligneCourante];
 				compteurPion = 1;
@@ -115,7 +126,7 @@ public class Plateau {
 	/**
 	 * Cette méthode cherche 4 pions de la même couleurs alignés dans une des 8 directions possibles.
 	 *
-	 * @return true si le jeu contient 4 pions align�s
+	 * @return true si le jeu contient 4 pions alignés
 	 */
 	public boolean recherche4PionsAlignes() {
 
@@ -193,11 +204,14 @@ public class Plateau {
         // Affiche le plateau
         for (int ligne = tailleLigne - 1; ligne >= 0; --ligne) {
             for (int colonne = 0; colonne < tailleColonne; colonne++) {
+
                 	System.out.print(this.pions[colonne][ligne]);
               	
                 }
             System.out.println();
             }
-            System.out.println("_____________________\n");
+            System.out.println();
+        }
+        System.out.println("_____________________\n");
     }
 }

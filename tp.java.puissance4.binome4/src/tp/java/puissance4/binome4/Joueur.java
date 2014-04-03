@@ -1,14 +1,15 @@
 package tp.java.puissance4.binome4;
 
 /**
- * Class Joueur
+ * TODO.
  *
- * @author massonsilvestre
- * @version V1.0
+ * @author TODO
+ * @version 1.0.0
  */
-
 public class Joueur {
-	private final String nom;
+	/** TODO. */
+    private final String nom;
+    /** TODO. */
     private final Pion couleur;
 
     public Joueur(String nom, Pion couleur) {
