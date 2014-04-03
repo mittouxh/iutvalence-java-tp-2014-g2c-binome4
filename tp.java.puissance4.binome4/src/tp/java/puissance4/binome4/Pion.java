@@ -15,10 +15,10 @@ public enum Pion {
 	CASE_VIDE(" . ", 0),
 	
 	/** The pion jaune. */
-	PION_JAUNE(" O ", 1),
+	PION_JAUNE(" \u25CF ", 1),
 	
 	/** The pion rouge. */
-	PION_ROUGE(" X ", 2);
+	PION_ROUGE(" \u25CB ", 2);
 	
 	/** The representation. */
 	private final String representation;

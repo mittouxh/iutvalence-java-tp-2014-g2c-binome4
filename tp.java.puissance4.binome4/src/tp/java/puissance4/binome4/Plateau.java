@@ -8,39 +8,30 @@ package tp.java.puissance4.binome4;
  */
 public class Plateau {
 	/** Nombre de colonnes. */
-	private static final int NOMBRE_COLONNE = 7;
+	private static final int NOMBRE_COLONNES = 7;
 	/** Nombre de lignes. */
-    private static final int NOMBRE_LIGNE = 6;
+    private static final int NOMBRE_LIGNES = 6;
   
     private final int tailleLigne;
     private final int tailleColonne;
-    private Pion[][] plateau;
+    private Pion[][] pions;
 
     public Plateau() {
-    	this(Plateau.NOMBRE_COLONNE, Plateau.NOMBRE_LIGNE);
+    	this(Plateau.NOMBRE_COLONNES, Plateau.NOMBRE_LIGNES);
     }
     
     public Plateau(int tailleColonne, int tailleLigne) {
         this.tailleColonne = tailleColonne;
         this.tailleLigne = tailleLigne;
 
-		plateau = new Pion[tailleColonne][tailleLigne];		
+		pions = new Pion[tailleColonne][tailleLigne];		
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
-				plateau[colonne][ligne] = Pion.CASE_VIDE;
+				pions[colonne][ligne] = Pion.CASE_VIDE;
 			}
 		}
 	}
 
-    /**
-     * TODO
-     *
-     * @param colonne TODO
-     * @param joueur  TODO
-     *
-     * @return true
-     * 			SSI la colonne n'est pas pleine.
-     */
     public boolean placerPion(int colonne, Pion joueur) {
 		if ((colonne < 0) || (colonne >= tailleColonne)) {
 			return false;
@@ -49,8 +40,8 @@ public class Plateau {
 		// On trouve la premiere case vide dans la colonne choisie,
 		// Si la colonne n'est pas pleine, on return true
 		for (int ligne = 0; ligne < tailleLigne; ligne++) {
-			if (plateau[colonne][ligne] == Pion.CASE_VIDE) {
-				plateau[colonne][ligne] = joueur;
+			if (pions[colonne][ligne] == Pion.CASE_VIDE) {
+				pions[colonne][ligne] = joueur;
 				return true;
 			}
 		}
@@ -98,9 +89,9 @@ public class Plateau {
 
 		while ((colonneCourante >= 0) && (colonneCourante < tailleColonne)
 				&& (ligneCourante >= 0) && (ligneCourante < tailleLigne)) {
-			if (plateau[colonneCourante][ligneCourante] != couleur) {
+			if (pions[colonneCourante][ligneCourante] != couleur) {
 				// Si la couleur vient à être modifier, on réinitialise le compteur
-				couleur = plateau[colonneCourante][ligneCourante];
+				couleur = pions[colonneCourante][ligneCourante];
 				compteurPion = 1;
 			} else {
 				// Sinon, si la couleur reste inchagée on l'incrémente
@@ -180,7 +171,7 @@ public class Plateau {
 		// On cherche une case vide. S'il n'y en a aucune, le tableau est plein
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
-				if (plateau[colonne][ligne] == Pion.CASE_VIDE) {
+				if (pions[colonne][ligne] == Pion.CASE_VIDE) {
 					return false;
 				}
 			}
@@ -202,7 +193,7 @@ public class Plateau {
         // Affiche le plateau
         for (int ligne = tailleLigne - 1; ligne >= 0; --ligne) {
             for (int colonne = 0; colonne < tailleColonne; colonne++) {
-                	System.out.print(this.plateau[colonne][ligne]);
+                	System.out.print(this.pions[colonne][ligne]);
               	
                 }
             System.out.println();
