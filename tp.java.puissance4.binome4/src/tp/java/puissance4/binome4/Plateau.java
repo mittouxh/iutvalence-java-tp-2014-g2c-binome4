@@ -10,22 +10,13 @@ public class Plateau {
 	/** Nombre de colonnes. */
 	private static final int NOMBRE_COLONNES = 7;
 	/** Nombre de lignes. */
-<<<<<<< HEAD
     private static final int NOMBRE_LIGNES = 6;
-  
-=======
-    private static final int NOMBRE_LIGNE = 6;
     /** TODO. */
->>>>>>> branch 'master' of https://github.com/MassonSilvestre/iutvalence-java-tp-2014-g2c-binome4.git
     private final int tailleLigne;
     /** TODO. */
     private final int tailleColonne;
-<<<<<<< HEAD
-    private Pion[][] pions;
-=======
     /** TODO. */
     private final Pion[][] plateau;
->>>>>>> branch 'master' of https://github.com/MassonSilvestre/iutvalence-java-tp-2014-g2c-binome4.git
 
     public Plateau() {
     	this(Plateau.NOMBRE_COLONNES, Plateau.NOMBRE_LIGNES);
@@ -37,10 +28,10 @@ public class Plateau {
         this.tailleColonne = tailleColonne;
         this.tailleLigne = tailleLigne;
 
-		pions = new Pion[tailleColonne][tailleLigne];		
+		plateau = new Pion[tailleColonne][tailleLigne];		
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
-				pions[colonne][ligne] = Pion.CASE_VIDE;
+				plateau[colonne][ligne] = Pion.CASE_VIDE;
 			}
 		}
 	}
@@ -53,8 +44,8 @@ public class Plateau {
 		// On trouve la premiere case vide dans la colonne choisie,
 		// Si la colonne n'est pas pleine, on return true
 		for (int ligne = 0; ligne < tailleLigne; ligne++) {
-			if (pions[colonne][ligne] == Pion.CASE_VIDE) {
-				pions[colonne][ligne] = joueur;
+			if (plateau[colonne][ligne] == Pion.CASE_VIDE) {
+				plateau[colonne][ligne] = joueur;
 				return true;
 			}
 		}
@@ -64,7 +55,7 @@ public class Plateau {
 	}
 
     /**
-     * Cette méthode cherche 4 pions de la meme couleur alignés.
+     * Cette méthode cherche 4 plateau de la meme couleur alignés.
      * <p/>
      * Elle incrémente le compteur (compteurPion) à chaque fois
      * qu'elle rencontre un pion de la même couleur aligné avec le
@@ -99,10 +90,10 @@ public class Plateau {
 
 		while ((colonneCourante >= 0) && (colonneCourante < tailleColonne)
 				&& (ligneCourante >= 0) && (ligneCourante < tailleLigne)) {
-			if (pions[colonneCourante][ligneCourante] != couleur) {
+			if (plateau[colonneCourante][ligneCourante] != couleur) {
 
 				// Si la couleur vient à être modifier, on réinitialise le compteur
-				couleur = pions[colonneCourante][ligneCourante];
+				couleur = plateau[colonneCourante][ligneCourante];
 				compteurPion = 1;
 			} else {
 				// Sinon, si la couleur reste inchagée on l'incrémente
@@ -124,9 +115,9 @@ public class Plateau {
 	}
 
 	/**
-	 * Cette méthode cherche 4 pions de la même couleurs alignés dans une des 8 directions possibles.
+	 * Cette méthode cherche 4 plateau de la même couleurs alignés dans une des 8 directions possibles.
 	 *
-	 * @return true si le jeu contient 4 pions alignés
+	 * @return true si le jeu contient 4 plateau alignés
 	 */
 	public boolean recherche4PionsAlignes() {
 
@@ -182,7 +173,7 @@ public class Plateau {
 		// On cherche une case vide. S'il n'y en a aucune, le tableau est plein
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
-				if (pions[colonne][ligne] == Pion.CASE_VIDE) {
+				if (plateau[colonne][ligne] == Pion.CASE_VIDE) {
 					return false;
 				}
 			}
@@ -205,13 +196,12 @@ public class Plateau {
         for (int ligne = tailleLigne - 1; ligne >= 0; --ligne) {
             for (int colonne = 0; colonne < tailleColonne; colonne++) {
 
-                	System.out.print(this.pions[colonne][ligne]);
+                	System.out.print(this.plateau[colonne][ligne]);
               	
                 }
             System.out.println();
             }
             System.out.println();
-        }
         System.out.println("_____________________\n");
     }
 }
