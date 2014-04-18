@@ -32,7 +32,7 @@ public class Application {
 		// Initialisation de la partie
 		System.out.println("\nLa partie est prête à commencer !");
 
-		new Controlleur(nom1,nom2).nouvellePartie();
+		new Controleur(nom1,nom2).nouvellePartie();
 		}
 }
 

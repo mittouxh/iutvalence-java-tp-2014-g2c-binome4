@@ -10,12 +10,12 @@ import java.util.Scanner;
  * @version V1.0
  *
  */
-public class Controlleur {
+public class Controleur {
 	private final Joueur[] joueurs;
 	private final Plateau plateau;
 	private final InterfaceP4 interfacep4;
 	
-	public Controlleur(String joueur1, String joueur2) {
+	public Controleur(String joueur1, String joueur2) {
 		this.joueurs = new Joueur[]{new Joueur(joueur1, Pion.PION_JAUNE), new Joueur(joueur2, Pion.PION_ROUGE)};
 		plateau = new Plateau();
 		interfacep4 = new InterfaceP4(plateau);
@@ -29,25 +29,7 @@ public class Controlleur {
 		while ((vainqueur == -1) && !plateau.estPlein()) {
 	        boolean coupValide = true;
 	        do {
-	        	interfacep4.afficher();
-	            // On va ici saisir la colonne souhaitée par le joueur et on va verifier sa validité.
-	            System.out.printf("Joueur %s, entrez le numéro de colonne souhaité (entre 1 et %d) : %n", joueurs[joueurCourant].obtenirNom(), plateau.getTailleColonne());
-	    		Scanner scanner = new Scanner(System.in);
-	    		try{
-	    			 int colonne = scanner.nextInt();
-	    	            
-	    	            // Remet la variable "col" entre 0 et taille-1.
-
-	    	            coupValide = plateau.placerPion(--colonne, joueurs[joueurCourant].obtenirCouleur());
-	    	            if (!coupValide) {
-	    	                System.out.println("Le coup est non valide !");
-	    	            }
-	    		}
-	    		catch(InputMismatchException e)
-	    		{
-	    			System.out.println("entrez une valeur numérique entre 1 et 7");
-	    			coupValide = false;
-	    		}
+	        	interfacep4.affichageJoueur(joueurs[joueurCourant].obtenirNom(),joueurs[joueurCourant].obtenirCouleur());
 	        }
 	        while (!coupValide);
 			if (plateau.estPlein()) {
@@ -75,7 +57,7 @@ public class Controlleur {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Voulez-vous prendre votre revanche ? Entrez du texte");
 		String result = scanner.nextLine();
-		if(!result.isEmpty()) new Controlleur(this.joueurs[0].obtenirNom(),this.joueurs[1].obtenirNom()).nouvellePartie();
+		if(!result.isEmpty()) new Controleur(this.joueurs[0].obtenirNom(),this.joueurs[1].obtenirNom()).nouvellePartie();
 		else System.exit(0);
 			}
 	

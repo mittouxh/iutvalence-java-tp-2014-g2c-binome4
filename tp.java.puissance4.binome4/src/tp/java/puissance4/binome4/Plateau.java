@@ -49,6 +49,10 @@ public class Plateau {
 				plateau[colonne][ligne] = Pion.CASE_VIDE;
 			}
 		}
+		plateau[1][5] = Pion.PION_JAUNE;
+		plateau[2][4] = Pion.PION_JAUNE;
+		plateau[3][3] = Pion.PION_JAUNE;
+		plateau[4][2] = Pion.PION_JAUNE;
 	}
 
     public boolean placerPion(int colonne, Pion joueur) {
@@ -100,8 +104,8 @@ public class Plateau {
 		Pion couleur = Pion.CASE_VIDE;
 		int compteurPion = 0;
 
-		int ligneCourante = x; // position x de départ
-		int colonneCourante = y; // position y de départ
+		int ligneCourante = y; // position x de départ
+		int colonneCourante = x; // position y de départ
 
 		while ((colonneCourante >= 0) && (colonneCourante < tailleColonne)
 				&& (ligneCourante >= 0) && (ligneCourante < tailleLigne)) {
@@ -157,7 +161,7 @@ public class Plateau {
 				return true;
 			}
 			// diagonale bas droit
-			if (compteurPionAlignes(colonne, 0, -1, 1)) {
+			if (compteurPionAlignes(tailleColonne-colonne-1, 0, -1, 1)) {
 				return true;
 			}
 		}
@@ -169,7 +173,7 @@ public class Plateau {
 				return true;
 			}
 			// diagonale haut droit
-			if (compteurPionAlignes(tailleLigne - 1, ligne, -1, 1)) {
+			if (compteurPionAlignes(tailleLigne-ligne-1, 0, -1, 1)) {
 				return true;
 			}
 		}
