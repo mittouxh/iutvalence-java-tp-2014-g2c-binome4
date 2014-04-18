@@ -13,10 +13,12 @@ import java.util.Scanner;
 public class Controlleur {
 	private final Joueur[] joueurs;
 	private final Plateau plateau;
-
+	private final InterfaceP4 interfacep4;
+	
 	public Controlleur(String joueur1, String joueur2) {
 		this.joueurs = new Joueur[]{new Joueur(joueur1, Pion.PION_JAUNE), new Joueur(joueur2, Pion.PION_ROUGE)};
 		plateau = new Plateau();
+		interfacep4 = new InterfaceP4(plateau);
 	}
 
 	public void nouvellePartie() {
@@ -27,9 +29,9 @@ public class Controlleur {
 		while ((vainqueur == -1) && !plateau.estPlein()) {
 	        boolean coupValide = true;
 	        do {
-	        	plateau.afficher();
+	        	interfacep4.afficher();
 	            // On va ici saisir la colonne souhaitée par le joueur et on va verifier sa validité.
-	            System.out.printf("Joueur %s, entrez le numéro de colonne souhaité (entre 1 et %d) : %n", joueurs[joueurCourant].obtenirNom(), plateau.obtenirTailleColonne());
+	            System.out.printf("Joueur %s, entrez le numéro de colonne souhaité (entre 1 et %d) : %n", joueurs[joueurCourant].obtenirNom(), plateau.getTailleColonne());
 	    		Scanner scanner = new Scanner(System.in);
 	    		try{
 	    			 int colonne = scanner.nextInt();
@@ -61,7 +63,7 @@ public class Controlleur {
 			joueurCourant = (joueurCourant + 1 ) % 2;
 		}
 		System.out.println(" La partie vient de ce terminer ");
-		plateau.afficher();
+		interfacep4.afficher();
 		
 		if (vainqueur == -1) {
 			System.out.println(" Match nul ");

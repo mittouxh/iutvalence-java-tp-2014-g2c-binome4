@@ -13,7 +13,9 @@ public class Plateau {
     private static final int NOMBRE_LIGNES = 6;
     /** TODO. */
     private final int tailleLigne;
-    /** TODO. */
+
+
+	/** TODO. */
     private final int tailleColonne;
     /** TODO. */
     private final Pion[][] plateau;
@@ -21,7 +23,20 @@ public class Plateau {
     public Plateau() {
     	this(Plateau.NOMBRE_COLONNES, Plateau.NOMBRE_LIGNES);
     }
+	/**
+	 * @return the tailleLigne
+	 */
+	public int getTailleLigne() {
+		return tailleLigne;
+	}
 
+	/**
+	 * @return the tailleColonne
+	 */
+	public int getTailleColonne() {
+		return tailleColonne;
+	}
+	
     /* TODO Vous ne vérifiez pas les paramétres ? */
     /** TODO. */
     public Plateau(int tailleColonne, int tailleLigne) {
@@ -180,28 +195,10 @@ public class Plateau {
 		}
 		return true;
 	}
-
-	public int obtenirTailleColonne() {
-		return tailleColonne;
+	public Pion getCase(int ligne, int colonne) {
+		return this.plateau[colonne][ligne];
 	}
+	
+	
 
-    public void afficher() {
-        // Affiche les numéros de colonnes jusqu'à tailleColonne
-        for (int numeroDeColonne = 1; numeroDeColonne <= tailleColonne; ++numeroDeColonne) {
-            System.out.printf("|%d|", numeroDeColonne);
-        }
-        System.out.println("\n_____________________");
-
-        // Affiche le plateau
-        for (int ligne = tailleLigne - 1; ligne >= 0; --ligne) {
-            for (int colonne = 0; colonne < tailleColonne; colonne++) {
-
-                	System.out.print(this.plateau[colonne][ligne]);
-              	
-                }
-            System.out.println();
-            }
-            System.out.println();
-        System.out.println("_____________________\n");
-    }
 }
