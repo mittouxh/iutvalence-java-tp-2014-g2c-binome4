@@ -1,28 +1,29 @@
 package tp.java.puissance4.binome4;
 
 /**
- * TODO.
+ * Class Plateau
  *
- * @author TODO
- * @version 1.0.0
+ * @author massonsilvestre
+ * @version V3.1
  */
+
 public class Plateau {
 	/** Nombre de colonnes. */
 	private static final int NOMBRE_COLONNES = 7;
 	/** Nombre de lignes. */
-    private static final int NOMBRE_LIGNES = 6;
-    /** TODO. */
-    private final int tailleLigne;
-
+	private static final int NOMBRE_LIGNES = 6;
+	/** TODO. */
+	private final int tailleLigne;
 
 	/** TODO. */
-    private final int tailleColonne;
-    /** TODO. */
-    private final Pion[][] plateau;
+	private final int tailleColonne;
+	/** TODO. */
+	private final Pion[][] plateau;
 
-    public Plateau() {
-    	this(Plateau.NOMBRE_COLONNES, Plateau.NOMBRE_LIGNES);
-    }
+	public Plateau() {
+		this(Plateau.NOMBRE_COLONNES, Plateau.NOMBRE_LIGNES);
+	}
+
 	/**
 	 * @return the tailleLigne
 	 */
@@ -36,26 +37,23 @@ public class Plateau {
 	public int getTailleColonne() {
 		return tailleColonne;
 	}
-	
-    /* TODO Vous ne vérifiez pas les paramétres ? */
-    /** TODO. */
-    public Plateau(int tailleColonne, int tailleLigne) {
-        this.tailleColonne = tailleColonne;
-        this.tailleLigne = tailleLigne;
 
-		plateau = new Pion[tailleColonne][tailleLigne];		
+	/* TODO Vous ne vérifiez pas les paramétres ? */
+	/** TODO. */
+	public Plateau(int tailleColonne, int tailleLigne) {
+		this.tailleColonne = tailleColonne;
+		this.tailleLigne = tailleLigne;
+
+		plateau = new Pion[tailleColonne][tailleLigne];
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
 				plateau[colonne][ligne] = Pion.CASE_VIDE;
 			}
 		}
-		plateau[1][5] = Pion.PION_JAUNE;
-		plateau[2][4] = Pion.PION_JAUNE;
-		plateau[3][3] = Pion.PION_JAUNE;
-		plateau[4][2] = Pion.PION_JAUNE;
+
 	}
 
-    public boolean placerPion(int colonne, Pion joueur) {
+	public boolean placerPion(int colonne, Pion joueur) {
 		if ((colonne < 0) || (colonne >= tailleColonne)) {
 			return false;
 		}
@@ -73,33 +71,38 @@ public class Plateau {
 		return false;
 	}
 
-    /**
-     * Cette méthode cherche 4 plateau de la meme couleur alignés.
-     * <p/>
-     * Elle incrémente le compteur (compteurPion) à chaque fois
-     * qu'elle rencontre un pion de la même couleur aligné avec le
-     * précédent. Quand le compteur == 4 on return <i>true</i>.
-     * <p/>
-     * On utilise le point d'origine, de coordonnées (x,y), et le
-     * déplacement delta (deltaColonne,deltaLigne).
-     * En utilisant des les bonnes valeurs dans cherche4() pour
-     * deltaColonne et deltaLigne on peut faire un check dans
-     * toutes les directions possibles :
-     * <ul>
-     * <li>horizontale: deltaColonne = 0, deltaLigne = 1</li>
-     * <li>verticale: deltaColonne = 1, delatLigne = 0</li>
-     * <li>1ere diagonale: delatColonne = 1, deltaLigne = 1</li>
-     * <li>2eme diagonale: deltaColonne = 1, deltaLigne = -1</li>
-     * </ul>
-     *
-     * @param x            Colonne de recherche originale
-     * @param y            Ligne de recherche originale
-     * @param deltaColonne Permet de se déplacer sur une colonne
-     * @param deltaLigne   Permet de se déplacer sur une ligne
-     *
-     * @return true SSI on trouve un alignement dans une des directions. Donc si compteurPion == 4.
-     */
-    private boolean compteurPionAlignes(int x, int y, int deltaColonne,	int deltaLigne) {
+	/**
+	 * Cette méthode cherche 4 plateau de la meme couleur alignés.
+	 * <p/>
+	 * Elle incrémente le compteur (compteurPion) à chaque fois qu'elle
+	 * rencontre un pion de la même couleur aligné avec le précédent. Quand
+	 * le compteur == 4 on return <i>true</i>.
+	 * <p/>
+	 * On utilise le point d'origine, de coordonnées (x,y), et le déplacement
+	 * delta (deltaColonne,deltaLigne). En utilisant des les bonnes valeurs dans
+	 * cherche4() pour deltaColonne et deltaLigne on peut faire un check dans
+	 * toutes les directions possibles :
+	 * <ul>
+	 * <li>horizontale: deltaColonne = 0, deltaLigne = 1</li>
+	 * <li>verticale: deltaColonne = 1, delatLigne = 0</li>
+	 * <li>1ere diagonale: delatColonne = 1, deltaLigne = 1</li>
+	 * <li>2eme diagonale: deltaColonne = 1, deltaLigne = -1</li>
+	 * </ul>
+	 * 
+	 * @param x
+	 *            Colonne de recherche originale
+	 * @param y
+	 *            Ligne de recherche originale
+	 * @param deltaColonne
+	 *            Permet de se déplacer sur une colonne
+	 * @param deltaLigne
+	 *            Permet de se déplacer sur une ligne
+	 * 
+	 * @return true SSI on trouve un alignement dans une des directions. Donc si
+	 *         compteurPion == 4.
+	 */
+	private boolean compteurPionAlignes(int x, int y, int deltaColonne,
+			int deltaLigne) {
 
 		Pion couleur = Pion.CASE_VIDE;
 		int compteurPion = 0;
@@ -111,7 +114,8 @@ public class Plateau {
 				&& (ligneCourante >= 0) && (ligneCourante < tailleLigne)) {
 			if (plateau[colonneCourante][ligneCourante] != couleur) {
 
-				// Si la couleur vient à être modifier, on réinitialise le compteur
+				// Si la couleur vient à être modifier, on réinitialise le
+				// compteur
 				couleur = plateau[colonneCourante][ligneCourante];
 				compteurPion = 1;
 			} else {
@@ -134,8 +138,9 @@ public class Plateau {
 	}
 
 	/**
-	 * Cette méthode cherche 4 plateau de la même couleurs alignés dans une des 8 directions possibles.
-	 *
+	 * Cette méthode cherche 4 plateau de la même couleurs alignés dans une
+	 * des 8 directions possibles.
+	 * 
 	 * @return true si le jeu contient 4 plateau alignés
 	 */
 	public boolean recherche4PionsAlignes() {
@@ -161,7 +166,7 @@ public class Plateau {
 				return true;
 			}
 			// diagonale bas droit
-			if (compteurPionAlignes(tailleColonne-colonne-1, 0, -1, 1)) {
+			if (compteurPionAlignes(tailleColonne - colonne - 1, 0, -1, 1)) {
 				return true;
 			}
 		}
@@ -173,7 +178,7 @@ public class Plateau {
 				return true;
 			}
 			// diagonale haut droit
-			if (compteurPionAlignes(tailleLigne-ligne-1, 0, -1, 1)) {
+			if (compteurPionAlignes(tailleLigne - ligne - 1, 0, -1, 1)) {
 				return true;
 			}
 		}
@@ -184,11 +189,14 @@ public class Plateau {
 
 	/**
 	 * Méthode vérifiant la possibilité ou non de placer un pion.
-	 *
+	 * 
 	 * @return true si le tableau est plein
 	 */
 	public boolean estPlein() {
-        /* TODO Pourquoi une recherche ? Pourquoi ne comptez-vous pas simplement les coups ? */
+		/*
+		 * TODO Pourquoi une recherche ? Pourquoi ne comptez-vous pas simplement
+		 * les coups ?
+		 */
 		// On cherche une case vide. S'il n'y en a aucune, le tableau est plein
 		for (int colonne = 0; colonne < tailleColonne; colonne++) {
 			for (int ligne = 0; ligne < tailleLigne; ligne++) {
@@ -199,10 +207,9 @@ public class Plateau {
 		}
 		return true;
 	}
+
 	public Pion getCase(int ligne, int colonne) {
 		return this.plateau[colonne][ligne];
 	}
-	
-	
 
 }

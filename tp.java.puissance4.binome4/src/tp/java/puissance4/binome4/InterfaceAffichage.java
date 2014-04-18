@@ -3,13 +3,19 @@ package tp.java.puissance4.binome4;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Class InterfaceP4
+ *
+ * @author massonsilvestre
+ * @version V3.1
+ */
 
-public class InterfaceP4 {
+public class InterfaceAffichage {
 
 	private final Plateau plateau; 
 
 	
-	public InterfaceP4(Plateau plateau) {
+	public InterfaceAffichage(Plateau plateau) {
 		this.plateau = plateau;
 
 	}
@@ -43,6 +49,7 @@ public class InterfaceP4 {
 	afficher();
     // On va ici saisir la colonne souhaitée par le joueur et on va verifier sa validité.
 	System.out.printf("Joueur %s, entrez le numéro de colonne souhaité (entre 1 et %d) : %n", nom, plateau.getTailleColonne());
+	@SuppressWarnings("resource")
 	Scanner scanner = new Scanner(System.in);
 	try{
 		 int colonne = scanner.nextInt();
@@ -60,5 +67,18 @@ public class InterfaceP4 {
 		coupValide = false;
 	}}
 	
-}
+	public void partieTerminee(){
+		System.out.println(" La partie vient de ce terminer ");
+		afficher();
+	}
 	
+	public void matchNul(){
+		System.out.println(" Match nul ");
+	}
+	
+	public void nomVainqueur(String nom){
+	
+		System.out.printf(" Le vainqueur est %s%n", nom);
+	}
+	
+}

@@ -1,11 +1,12 @@
 package tp.java.puissance4.binome4;
 
 /**
- * TODO.
+ * Class Joueur
  *
- * @author TODO
- * @version 1.0.0
+ * @author massonsilvestre
+ * @version V3.1
  */
+
 public class Joueur {
 	/** TODO. */
     private final String nom;

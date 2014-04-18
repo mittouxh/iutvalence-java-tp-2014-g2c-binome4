@@ -3,13 +3,14 @@ package tp.java.puissance4.binome4;
 import java.util.Scanner;
 
 /**
- * TODO.
+ * Class Application
  *
- * @author TODO
- * @version 1.0.0
+ * @author massonsilvestre
+ * @version V3.1
  */
 public class Application {
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		// Saisie du joueur 1 --> couleur Jaune
 		System.out.println("Entrez le nom du Joueur n°1 : ");
