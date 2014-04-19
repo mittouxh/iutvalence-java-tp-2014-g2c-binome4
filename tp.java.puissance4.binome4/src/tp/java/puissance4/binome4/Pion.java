@@ -4,7 +4,7 @@ package tp.java.puissance4.binome4;
  * Class Pion
  * 
  * @author massonsilvestre
- * @version V3.1
+ * @version V3.2
  */
 
 public enum Pion {

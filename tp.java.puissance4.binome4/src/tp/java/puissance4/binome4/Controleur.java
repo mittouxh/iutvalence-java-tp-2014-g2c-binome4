@@ -5,7 +5,7 @@ package tp.java.puissance4.binome4;
  * Class Puissance4
  * 
  * @author massonsilvestre
- * @version V3.1
+ * @version V3.2
  * 
  */
 public class Controleur {
@@ -48,10 +48,10 @@ public class Controleur {
 
 		if (vainqueur == -1) {
 			interfacep4.matchNul();
-		} else {
-			interfacep4.nomVainqueur(joueurs[joueurCourant].obtenirNom());
+		} 
+		else {
+			interfacep4.nomVainqueur(joueurs[vainqueur].obtenirNom());
 		}
-
 	}
 
 }

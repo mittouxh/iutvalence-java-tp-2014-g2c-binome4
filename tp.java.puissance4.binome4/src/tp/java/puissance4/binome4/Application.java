@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Class Application
  *
  * @author massonsilvestre
- * @version V3.1
+ * @version V3.2
  */
 public class Application {
 	public static void main(String[] args) {

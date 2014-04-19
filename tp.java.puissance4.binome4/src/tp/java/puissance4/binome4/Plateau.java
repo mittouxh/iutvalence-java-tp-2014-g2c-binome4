@@ -4,7 +4,7 @@ package tp.java.puissance4.binome4;
  * Class Plateau
  *
  * @author massonsilvestre
- * @version V3.1
+ * @version V3.2
  */
 
 public class Plateau {
@@ -72,7 +72,7 @@ public class Plateau {
 	}
 
 	/**
-	 * Cette méthode cherche 4 plateau de la meme couleur alignés.
+	 * Cette méthode cherche 4 pions de la meme couleur alignés.
 	 * <p/>
 	 * Elle incrémente le compteur (compteurPion) à chaque fois qu'elle
 	 * rencontre un pion de la même couleur aligné avec le précédent. Quand
