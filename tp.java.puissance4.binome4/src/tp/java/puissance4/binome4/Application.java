@@ -12,6 +12,7 @@ public class Application {
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
+		IHM ihm = new IHM();
 		// Saisie du joueur 1 --> couleur Jaune
 		System.out.println("Entrez le nom du Joueur n°1 : ");
 		String nom1 = scanner.nextLine();
