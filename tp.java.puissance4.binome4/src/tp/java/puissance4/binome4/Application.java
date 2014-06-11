@@ -2,6 +2,8 @@ package tp.java.puissance4.binome4;
 
 import java.util.Scanner;
 
+import tp.java.puissance4.binome4.IHM.IHM;
+
 /**
  * Class Application
  *
